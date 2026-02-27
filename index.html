@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FNNtech.dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module" crossorigin src="script.js"></script>
+    <link rel="stylesheet" crossorigin href="styles.css">
+</head>
+<body>
+
+<!-- ===== LOGIN SCREEN ===== -->
+<div id="loginScreen">
+    <div class="login-box">
+        <div class="login-icon"><i class="fas fa-bolt"></i></div>
+        <h1>FNNtech.dev</h1>
+        <p class="subtitle">Engineer Faith Njoroge &bull; <span>Y2 S2</span></p>
+        <div class="input-wrap">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="passwordInput" placeholder="Enter access code..." autocomplete="off">
+        </div>
+        <button class="login-btn" id="loginBtn">ACTIVATE <i class="fas fa-arrow-right"></i></button>
+        <div class="login-error" id="loginError"></div>
+        <p class="login-hint"><i class="fas fa-lightbulb"></i> Hint: What should you always remember to do?</p>
+    </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div id="app" class="hidden">
+    <!-- Header -->
+    <header class="header">
+        <div class="profile-area" id="profileArea" title="Click to upload photo">
+            <div class="profile-initials" id="profileDisplay">FN</div>
+            <input type="file" id="profileInput" accept="image/*" style="display:none">
+        </div>
+        <div class="header-info">
+            <h1>ENG. FAITH NJOROGE</h1>
+            <p>Year 2, Semester 2 &bull; Academic Year 2025/2026</p>
+        </div>
+        <div class="header-right">
+            <div class="live-clock" id="liveClock">00:00:00</div>
+            <div class="live-date" id="liveDate"></div>
+            <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Lock</button>
+        </div>
+    </header>
+
+    <!-- Greeting -->
+    <div class="greeting-bar" id="greetingBar"></div>
+
+    <!-- Quote -->
+    <div class="quote-card" id="quoteCard">
+        <div class="quote-text" id="quoteText"></div>
+        <div class="quote-author" id="quoteAuthor"></div>
+    </div>
+
+    <!-- Countdown -->
+    <section class="countdown-section">
+        <div class="countdown-label" id="countdownLabel"><i class="fas fa-hourglass-half"></i> COUNTDOWN TO EXAMS</div>
+        <div class="countdown-digits" id="countdownDigits">
+            <div class="countdown-unit">
+                <div class="countdown-num" id="cDays">00</div>
+                <div class="countdown-num-label">Days</div>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-num" id="cHours">00</div>
+                <div class="countdown-num-label">Hours</div>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-num" id="cMins">00</div>
+                <div class="countdown-num-label">Minutes</div>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-num" id="cSecs">00</div>
+                <div class="countdown-num-label">Seconds</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule + Checklist -->
+    <div class="grid-2">
+        <section class="card" id="scheduleCard">
+            <div class="card-title"><i class="fas fa-calendar-day"></i> TODAY'S SCHEDULE</div>
+            <div id="scheduleContent"></div>
+        </section>
+        <section class="card" id="checklistCard">
+            <div class="card-title"><i class="fas fa-tasks"></i> EAT YOUR FROGS TODAY</div>
+            <div class="frog-header">
+                <span class="frog-emoji">&#129416;</span>
+                <span>Small steps daily, Engineer Faith!</span>
+            </div>
+            <div id="checklistContent"></div>
+            <div id="allDoneBanner"></div>
+        </section>
+    </div>
+
+    <!-- Streak -->
+    <div class="streak-bar" id="streakBar">
+        <div class="streak-item">
+            <span class="streak-fire">&#128293;</span>
+            <div>
+                <div class="streak-num" id="currentStreak">0</div>
+                <div class="streak-label">Current Streak</div>
+            </div>
+        </div>
+        <div class="streak-item">
+            <span class="streak-fire">&#127942;</span>
+            <div>
+                <div class="streak-num" id="bestStreak">0</div>
+                <div class="streak-label">Best Streak</div>
+            </div>
+        </div>
+        <div class="streak-item">
+            <span class="streak-fire">&#11088;</span>
+            <div>
+                <div class="streak-num" id="totalComplete">0</div>
+                <div class="streak-label">Perfect Days</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timetable -->
+    <section class="timetable-section card">
+        <div class="card-title"><i class="fas fa-table"></i> WEEKLY TIMETABLE</div>
+        <div id="timetableContent"></div>
+    </section>
+
+    <!-- Books -->
+    <section class="books-section card">
+        <div class="card-title"><i class="fas fa-book-open"></i> READING LIST</div>
+        <div class="books-grid" id="booksContent"></div>
+    </section>
+
+    <!-- Frontend Dev -->
+    <section class="frontend-section">
+        <div class="frontend-card">
+            <div class="frontend-header">
+                <h3><i class="fas fa-code"></i> FRONTEND WEB DEVELOPMENT</h3>
+                <span>Jan 1 &ndash; Apr 30, 2026</span>
+            </div>
+            <div class="frontend-big-pct" id="frontendPct">0%</div>
+            <div class="frontend-bar">
+                <div class="frontend-bar-fill" id="frontendBar" style="width:0%"></div>
+            </div>
+            <div class="frontend-meta">
+                <span id="frontendElapsed">0 days in</span>
+                <span id="frontendRemaining">120 days left</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activity History -->
+    <section class="history-section card">
+        <div class="card-title"><i class="fas fa-chart-bar"></i> ACTIVITY HISTORY</div>
+        <div class="cal-header">
+            <button class="cal-nav" id="calPrev"><i class="fas fa-chevron-left"></i></button>
+            <span class="cal-month" id="calMonth"></span>
+            <button class="cal-nav" id="calNext"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend">
+            <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(34,197,94,0.35)"></div> All done</div>
+            <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(245,158,11,0.3)"></div> Partial</div>
+            <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(239,68,68,0.15)"></div> Missed</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        Stay focused, <strong>Engineer Faith</strong>. The world needs what you're building. &#9889;
+    </footer>
+</div>
+
+<!-- Toast Container -->
+<div id="toastContainer"></div>
+<!-- Confetti Container -->
+<div id="confettiContainer"></div>
+</script>
+</body>
+</html>
